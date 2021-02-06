@@ -14,7 +14,6 @@
 - Gia
 - Vanessa
 - Alex H.
-- Sonitta
 
 ## Team 4
 - Lara
