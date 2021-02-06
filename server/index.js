@@ -32,6 +32,8 @@ express()
   // REST endpoints?
   .get('/bacon', (req, res) => res.status(200).json('🥓'))
 
+  // get all products
+
   // get a single product
   .get('/product/:id', getSingleProduct)
 

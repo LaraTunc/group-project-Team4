@@ -1,6 +1,6 @@
 const items = require('././data/items.json');
 
-// get all products
+// get all products function
 
 // get a single product
 const getSingleProduct = (req, res) => {
