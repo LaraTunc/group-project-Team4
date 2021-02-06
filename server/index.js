@@ -6,6 +6,11 @@ const morgan = require('morgan');
 
 const PORT = 4000;
 
+const {
+  getSingleProduct,
+  updateStock,
+} = require('./handlers.js');
+
 express()
   .use(function(req, res, next) {
     res.header(
@@ -26,5 +31,11 @@ express()
 
   // REST endpoints?
   .get('/bacon', (req, res) => res.status(200).json('🥓'))
+
+  // get a single product
+  .get('/product/:id', getSingleProduct)
+
+  // update stock of products
+  .put('/order',updateStock)
 
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));
