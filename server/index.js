@@ -7,6 +7,8 @@ const morgan = require('morgan');
 const PORT = 4000;
 
 const {
+  getProducts,
+  getCompanies,
   getSingleProduct,
   updateStock,
 } = require('./handlers.js');
@@ -32,7 +34,11 @@ express()
   // REST endpoints?
   .get('/bacon', (req, res) => res.status(200).json('🥓'))
 
-  // get all products endpoint
+  // get all products
+  .get('/products', getProducts)
+
+  // get all companies
+  .get('/companies', getCompanies)
 
   // get a single product
   .get('/product/:id', getSingleProduct)
