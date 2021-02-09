@@ -1,11 +1,19 @@
 const items = require('././data/items.json');
 
 // get all products
+const getProducts = (req, res) => {
+    return res.status(200).json({ status: 200, data: items });
+}
+
+// get all companies
+const getCompanies = (req, res) => {
+    return res.status(200).json({ status: 200, data: companies });
+}
 
 // get a single product
 const getSingleProduct = (req, res) => {
     let productId = req.params.id;
-    let productInfo = items.find((item) => item["_id"] == productId);
+    let productInfo = items.find((item) => item["_id"].toString() == productId);
     res.status(200).json({
         status: 200,
         data: productInfo
@@ -31,6 +39,8 @@ const updateStock = (req,res)=> {
 
 
 module.exports = {
+    getProducts,
+    getCompanies,
     getSingleProduct,
     updateStock,
 }
