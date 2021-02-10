@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
   const [bacon, setBacon] = useState(null);
@@ -9,7 +10,24 @@ function App() {
       .then(data => setBacon(data));
   }, []);
 
-  return <div>{bacon ? bacon : `...where's my stuff?...`}</div>;
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <div>Homepage {bacon}</div>
+        </Route>
+        <Route path="/products">
+          <div>Item Grid</div>
+        </Route>
+        <Route path="/product/:productId">
+          <div>Single Item</div>
+        </Route>
+        <Route path="/cart">
+          <div>Cart</div>
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default App;
