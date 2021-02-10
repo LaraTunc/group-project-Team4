@@ -1,4 +1,5 @@
 const items = require('././data/items.json');
+const companies = require('././data/companies.json');
 
 // get all products
 const getProducts = (req, res) => {
@@ -13,7 +14,8 @@ const getCompanies = (req, res) => {
 // get a single product
 const getSingleProduct = (req, res) => {
     let productId = req.params.id;
-    let productInfo = items.find((item) => item["_id"].toString() == productId);
+    let productInfo = items.find((item) => item["_id"].toString() === productId);
+
     res.status(200).json({
         status: 200,
         data: productInfo
