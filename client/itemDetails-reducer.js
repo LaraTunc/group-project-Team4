@@ -1,6 +1,7 @@
 const initialState = {
     status: 'idle',
     currentItem: null,
+    error: null,
 }
 
 export default function itemDetailsReducer(state = initialState, action) {
@@ -25,6 +26,7 @@ export default function itemDetailsReducer(state = initialState, action) {
             return {
                 ...state,
                 status: 'error',
+                error: action.error,
             }
         }
     }

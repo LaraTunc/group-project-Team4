@@ -23,5 +23,5 @@ getItemDetails = () => {
     fetch('/product/${item}')
     .then((res) => res.json())
     .then((response) => dispatch(receiveItemDetails(response)))
-    .catch((error) => dispatch(receiveItemDetailsError()))
+    .catch((error) => dispatch(receiveItemDetailsError(error)))
 }
