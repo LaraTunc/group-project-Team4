@@ -15,6 +15,7 @@ const getCompanies = (req, res) => {
 const getSingleProduct = (req, res) => {
     let productId = req.params.id;
     let productInfo = items.find((item) => item["_id"].toString() === productId);
+
     res.status(200).json({
         status: 200,
         data: productInfo
