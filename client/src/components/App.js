@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { BrowserRouter as Router,
   Switch,
   Route } from 'react-router-dom';
@@ -14,7 +15,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <BrowserRouter>
       <Switch>
         <Route exact path="/products">
           <ItemGrid />
@@ -23,11 +24,11 @@ function App() {
         <Route path="/product/:productId">
           <div>Single Item</div>
         </Route>
-        <Route path="/order">
-          <div>order</div>
+        <Route path="/cart">
+          <div>Cart</div>
         </Route>
       </Switch>
-    </Router>
+    </BrowserRouter>
   );
 }
 
