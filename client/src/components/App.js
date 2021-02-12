@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+import { BrowserRouter as Router,
+  Switch,
+  Route } from 'react-router-dom';
+import ItemGrid from './ItemGrid';
 
 function App() {
   const [bacon, setBacon] = useState(null);
@@ -13,11 +17,9 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
-          <div>Homepage {bacon}</div>
-        </Route>
-        <Route path="/products">
-          <div>Item Grid</div>
+        <Route exact path="/products">
+          <ItemGrid />
+          <div>Item Grid {bacon}</div>
         </Route>
         <Route path="/product/:productId">
           <div>Single Item</div>
