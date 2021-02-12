@@ -10,5 +10,20 @@ export const receiveItemDetails = () => ({
 
 export const receiveItemDetailsError = () => ({
     type: "RECEIVE_ITEM_DETAILS_ERROR",
-    error
+    error,
 })
+    
+export const fetchItemsData = () => ({
+    type: 'FETCH-ITEMS-DATA',
+})
+
+export const receiveItemsData = (currentItems) => ({
+    type:  'RECEIVE-ITEMS-DATA',
+    currentItems,
+})
+
+export const receiveItemsDataError = (error) => ({
+    type: 'ERROR-ITEMS-DATA',
+    error,
+})
+
