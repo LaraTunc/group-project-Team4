@@ -61,5 +61,9 @@ button {
     margin: 0;
     padding: 0;
     font-size: 17px;
+    background:none;
+    :hover {
+        transform:scale(1.1);
+    };
 }
 `;

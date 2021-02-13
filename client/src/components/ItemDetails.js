@@ -1,13 +1,19 @@
 import React from "react";
 import { useSelector } from "react-redux";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addItem } from '../actions';
 
 // onClick of item in grid sends get request
 
 const ItemDetails = () => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const currentItem = useSelector((state) => state.currentItem);
     const status = useSelector((state) => state.status);
+
+    // To be added on an Add to Cart button 
+    handleClick=() => {
+        dispatch(addItem(currentItem));
+    };
 
     return (
         <>

@@ -2,16 +2,27 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CartItem = ()=>{
+    const handleRemove = (ev)=>{
+        ev.preventDefault(); 
+        console.log("clicked remove button");
+    };
+
     return (
         <Wrapper>
-            <ItemImage><img src="" alt="item image"/></ItemImage>
+            <ItemImage><img src="" alt="item"/></ItemImage>
             <Item>
                 <Brand>Brand</Brand>
                 <p>Brand</p>
                 <p>Description</p>
             </Item>
             <Price>$240.00 CAD</Price>
-            <Remove>X</Remove>
+            <Remove>
+                <button 
+                onClick={handleRemove}
+                >
+                    X
+                </button>
+            </Remove>
         </Wrapper>
     ); 
 };
@@ -26,8 +37,9 @@ height: 200px;
 
 const ItemImage = styled.div`
 flex:3;
-border:1px solid grey; 
 height:100%; 
+display: flex;
+justify-content:center;
 * {
     border:1px solid grey;
     height:100%; 
