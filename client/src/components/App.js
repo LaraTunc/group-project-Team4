@@ -5,7 +5,7 @@ import { BrowserRouter,
   Route } from 'react-router-dom';
 import ItemGrid from './ItemGrid';
 import Cart from './Cart';
-
+import GlobalStyles from './GlobalStyles';
 
 function App() {
   const [bacon, setBacon] = useState(null);
@@ -18,6 +18,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <GlobalStyles/>
       <Switch>
         <Route exact path="/">
           <div>Mockup Landing page</div>

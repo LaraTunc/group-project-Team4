@@ -21,14 +21,10 @@ width:100%;
 border-top: 1px solid grey;
 border-bottom: 1px solid grey;
 display:flex;
-height: 600px;
-* {
-    margin:5px;
-};
+height: 200px;
 `; 
 
-const ItemImage = styled.img`
-margin:5px; 
+const ItemImage = styled.div`
 flex:3;
 border:1px solid grey; 
 height:100%; 
