@@ -32,6 +32,8 @@ const ProductImage = styled.img`
     height: 300px;
 `;
 
+export default ItemDetails;
+
 // onClick function to get item details
 // import { requestItemDetails, receiveItemDetails, receiveItemDetailsError } from '.././actions';
 // getItemDetails = () => {
