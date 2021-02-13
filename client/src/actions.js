@@ -10,6 +10,20 @@ export const receiveItemDetails = (currentItem) => ({
 
 export const receiveItemDetailsError = (error) => ({
     type: "RECEIVE_ITEM_DETAILS_ERROR",
+})
+
+// COMPANIES ACTION
+export const requestCompanies = () => ({
+    type: "REQUEST_COMPANIES",
+})
+
+export const receiveCompanies = (companies) => ({
+    type: "RECEIVE_COMPANIES",
+    companies,
+})
+
+export const receiveCompaniesError = (error) => ({
+    type: "RECEIVE_COMPANIES_ERROR",
     error,
 })
     

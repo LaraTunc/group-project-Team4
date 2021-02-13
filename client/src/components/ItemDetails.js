@@ -25,11 +25,12 @@ const ItemDetails = () => {
                 <h1>{currentItem["name"]}</h1>
                 <p>{currentItem["price"]}</p>
                 <p>Body Location: {currentItem["body_location"]}</p>
+                <button>Add to Cart</button>
             </div>
         </ProductContainer>
         </>
     )
-}
+};
 
 const ProductContainer = styled.div`
     display: flex;
