@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+import { BrowserRouter,
+  Switch,
+  Route } from 'react-router-dom';
+import ItemGrid from './ItemGrid';
+import Cart from './Cart';
+
 
 function App() {
   const [bacon, setBacon] = useState(null);
@@ -14,16 +20,16 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <div>Homepage {bacon}</div>
+          <div>Mockup Landing page</div>
         </Route>
-        <Route path="/products">
-          <div>Item Grid</div>
+        <Route exact path="/products">
+          <ItemGrid />
         </Route>
         <Route path="/product/:productId">
           <div>Single Item</div>
         </Route>
         <Route path="/cart">
-          <div>Cart</div>
+          <Cart />
         </Route>
       </Switch>
     </BrowserRouter>
