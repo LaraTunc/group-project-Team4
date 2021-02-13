@@ -1,28 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useHistory } from "react-router-dom";
-import { CartSummary, CartButton } from './CartComponents';
+import { CartButton } from './CartComponents';
 
-const Cart = ()=>{
+const Confirmation = ()=> {
     let history = useHistory();
 
     return (
         <Wrapper>
-            <Title><h3>My Cart</h3></Title>
-            <CartSummary/>
+            <Title><h3>Thank you for your order! Order details have been sent to your email.</h3></Title>
             <CartButton
-                handleClick={()=> history.push("/checkout")}
+                handleClick={()=> history.push("/")}
             >
-                Proceed to Checkout
+                Back to Homepage
             </CartButton>
         </Wrapper>
-    ); 
+    );
 };
 
 const Wrapper = styled.div`
 display: flex; 
 flex-direction:column;
 margin: 0% 5%;
+height:100vh;
+justify-content:center;
 `;
 
 const Title = styled.div`
@@ -30,5 +31,4 @@ display:flex;
 justify-content:center;
 `;
 
-
-export default Cart; 
+export default Confirmation; 
