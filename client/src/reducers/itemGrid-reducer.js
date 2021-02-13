@@ -30,6 +30,3 @@ export default function itemGridReducer(state = initialState, action) {
         }
     }
 }
-
-export const getProductsArray = state =>
-Object.values(state);
