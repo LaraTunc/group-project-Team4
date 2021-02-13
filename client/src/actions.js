@@ -3,12 +3,12 @@ export const requestItemDetails = () => ({
     type: "REQUEST_ITEM_DETAILS",
 })
 
-export const receiveItemDetails = () => ({
+export const receiveItemDetails = (currentItem) => ({
     type: "RECEIVE_ITEM_DETAILS",
     currentItem,
 })
 
-export const receiveItemDetailsError = () => ({
+export const receiveItemDetailsError = (error) => ({
     type: "RECEIVE_ITEM_DETAILS_ERROR",
     error,
 })
