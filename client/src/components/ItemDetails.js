@@ -17,11 +17,12 @@ const ItemDetails = () => {
                 <h1>{currentItem["name"]}</h1>
                 <p>{currentItem["price"]}</p>
                 <p>Body Location: {currentItem["body_location"]}</p>
+                <button>Add to Cart</button>
             </div>
         </ProductContainer>
         </>
     )
-}
+};
 
 const ProductContainer = styled.div`
     display: flex;
@@ -31,6 +32,8 @@ const ProductImage = styled.img`
     width: 300px;
     height: 300px;
 `;
+
+export default ItemDetails;
 
 // onClick function to get item details
 // import { requestItemDetails, receiveItemDetails, receiveItemDetailsError } from '.././actions';
