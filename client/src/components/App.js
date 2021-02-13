@@ -9,6 +9,8 @@ import GlobalStyles from './GlobalStyles';
 
 import ItemDetails from './ItemDetails';
 import Homepage from './Homepage';
+import Navbar from './Navbar';
+import About from './About';
 import Checkout from './Checkout';
 import Confirmation from './Confirmation';
 
@@ -24,9 +26,13 @@ function App() {
   return (
     <BrowserRouter>
     <GlobalStyles/>
+    <Navbar></Navbar>
       <Switch>
         <Route exact path="/">
           <Homepage />
+        </Route>
+        <Route exact path="/about">
+          <About />
         </Route>
         <Route exact path="/products">
           <ItemGrid />

@@ -28,7 +28,7 @@ const ItemGrid = () => {
         })
     }, []);
 
-    useEffect(() => {
+    useEffect( () => {
         fetch('/companies')
         .then(res => res.json())
         .then(json => {
@@ -51,6 +51,7 @@ const ItemGrid = () => {
                         <ItemLink href={`/product/${item._id}`} />
                         <Image src={item.imageSrc} />
                         {
+                        companies && 
                         companies.map((company) => {
                             if (item.companyId === company._id) {
                                 return <Brand>{company.name}</Brand>
@@ -81,6 +82,7 @@ grid-gap: 24px;
 `;
 
 const ItemWrapper = styled.div`
+position: relative;
 padding: 15px;
 `;
 
