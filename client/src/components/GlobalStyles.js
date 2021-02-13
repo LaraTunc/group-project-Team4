@@ -20,6 +20,7 @@ span {
 }
 
 html, body {
+    margin-top: 60px;
     max-width: 100vw;
 }
 
