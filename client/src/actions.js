@@ -10,7 +10,6 @@ export const receiveItemDetails = (currentItem) => ({
 
 export const receiveItemDetailsError = (error) => ({
     type: "RECEIVE_ITEM_DETAILS_ERROR",
-    error
 })
 
 // COMPANIES ACTION
@@ -27,3 +26,32 @@ export const receiveCompaniesError = (error) => ({
     type: "RECEIVE_COMPANIES_ERROR",
     error,
 })
+    
+export const fetchItemsData = () => ({
+    type: 'FETCH-ITEMS-DATA',
+})
+
+export const receiveItemsData = (currentItems) => ({
+    type:  'RECEIVE-ITEMS-DATA',
+    currentItems,
+})
+
+export const receiveItemsDataError = (error) => ({
+    type: 'ERROR-ITEMS-DATA',
+    error,
+})
+
+export const addItem = (item) => ({
+    type: 'ADD_ITEM',
+    item,
+});
+
+export const removeItem = (item) => ({
+    type: 'REMOVE_ITEM',
+    item,
+});
+
+export const updateQuantity = (item) => ({
+    type: 'UPDATE_QUANTITY',
+    item,
+});

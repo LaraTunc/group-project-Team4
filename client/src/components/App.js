@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+import { BrowserRouter,
+  Switch,
+  Route } from 'react-router-dom';
+import ItemGrid from './ItemGrid';
+import Cart from './Cart';
+import GlobalStyles from './GlobalStyles';
 
 import ItemDetails from './ItemDetails';
 import Homepage from './Homepage';
+import Checkout from './Checkout';
+import Confirmation from './Confirmation';
 
 function App() {
   const [bacon, setBacon] = useState(null);
@@ -15,18 +23,25 @@ function App() {
 
   return (
     <BrowserRouter>
+    <GlobalStyles/>
       <Switch>
         <Route exact path="/">
           <Homepage />
         </Route>
-        <Route path="/products">
-          <div>Item Grid</div>
+        <Route exact path="/products">
+          <ItemGrid />
         </Route>
         <Route path="/product/:productId">
           <ItemDetails />
         </Route>
         <Route path="/cart">
-          <div>Cart</div>
+          <Cart />
+        </Route>
+        <Route path="/checkout">
+          <Checkout />
+        </Route>
+        <Route path="/confirmation">
+          <Confirmation />
         </Route>
       </Switch>
     </BrowserRouter>
