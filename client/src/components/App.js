@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router,
-  Switch,
-  Route } from 'react-router-dom';
-import ItemGrid from './ItemGrid';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
   const [bacon, setBacon] = useState(null);
@@ -14,20 +11,22 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <BrowserRouter>
       <Switch>
-        <Route exact path="/products">
-          <ItemGrid />
-          <div>Item Grid {bacon}</div>
+        <Route exact path="/">
+          <div>Homepage {bacon}</div>
+        </Route>
+        <Route path="/products">
+          <div>Item Grid</div>
         </Route>
         <Route path="/product/:productId">
           <div>Single Item</div>
         </Route>
-        <Route path="/order">
-          <div>order</div>
+        <Route path="/cart">
+          <div>Cart</div>
         </Route>
       </Switch>
-    </Router>
+    </BrowserRouter>
   );
 }
 
