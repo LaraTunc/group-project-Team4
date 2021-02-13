@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import ItemDetails from './ItemDetails';
+import Homepage from './Homepage';
 
 function App() {
   const [bacon, setBacon] = useState(null);
@@ -16,7 +17,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <div>Homepage {bacon}</div>
+          <Homepage />
         </Route>
         <Route path="/products">
           <div>Item Grid</div>
