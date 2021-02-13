@@ -5,7 +5,7 @@ import CartItem from './CartItem';
 const Cart = ()=>{
     return (
         <Wrapper>
-            <h3>My Cart</h3>
+            <Title><h3>My Cart</h3></Title>
             <Headers>
                 <Placeholder1/>
                 <Item>ITEM</Item>
@@ -31,9 +31,16 @@ const Cart = ()=>{
 };
 
 const Wrapper = styled.div`
-width: 60vw; 
+width: 100%; 
 display: flex; 
 flex-direction:column;
+*{
+    border: 1px solid green;
+};
+`;
+
+const Title = styled.div`
+display:flex;
 justify-content:center;
 `;
 
@@ -59,16 +66,19 @@ flex:1;
 
 const Total = styled.div`
 width:100%;
+display:flex;
 `;
 
 const Totals = styled.div`
 display:flex;
 flex-direction:column;
+flex:10;
 `;
 
 const Prices = styled.div`
 display:flex;
 flex-direction:column;
+flex:3;
 `;
 
 const Placeholder2 = styled.div`

@@ -5,7 +5,10 @@ import { BrowserRouter,
   Route } from 'react-router-dom';
 import ItemGrid from './ItemGrid';
 import Cart from './Cart';
+import GlobalStyles from './GlobalStyles';
 
+import ItemDetails from './ItemDetails';
+import Homepage from './Homepage';
 
 function App() {
   const [bacon, setBacon] = useState(null);
@@ -18,15 +21,16 @@ function App() {
 
   return (
     <BrowserRouter>
+    <GlobalStyles/>
       <Switch>
         <Route exact path="/">
-          <div>Mockup Landing page</div>
+          <Homepage />
         </Route>
         <Route exact path="/products">
           <ItemGrid />
         </Route>
         <Route path="/product/:productId">
-          <div>Single Item</div>
+          <ItemDetails />
         </Route>
         <Route path="/cart">
           <Cart />
