@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
+import ItemDetails from './ItemDetails';
+
 function App() {
   const [bacon, setBacon] = useState(null);
 
@@ -20,7 +22,7 @@ function App() {
           <div>Item Grid</div>
         </Route>
         <Route path="/product/:productId">
-          <div>Single Item</div>
+          <ItemDetails />
         </Route>
         <Route path="/cart">
           <div>Cart</div>
