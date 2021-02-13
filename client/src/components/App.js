@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+import { BrowserRouter,
+  Switch,
+  Route } from 'react-router-dom';
+import ItemGrid from './ItemGrid';
+import Cart from './Cart';
+import GlobalStyles from './GlobalStyles';
 
 import ItemDetails from './ItemDetails';
 import Homepage from './Homepage';
@@ -15,18 +21,19 @@ function App() {
 
   return (
     <BrowserRouter>
+    <GlobalStyles/>
       <Switch>
         <Route exact path="/">
           <Homepage />
         </Route>
-        <Route path="/products">
-          <div>Item Grid</div>
+        <Route exact path="/products">
+          <ItemGrid />
         </Route>
         <Route path="/product/:productId">
           <ItemDetails />
         </Route>
         <Route path="/cart">
-          <div>Cart</div>
+          <Cart />
         </Route>
       </Switch>
     </BrowserRouter>
