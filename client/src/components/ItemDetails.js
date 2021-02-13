@@ -12,7 +12,7 @@ const ItemDetails = () => {
     const status = useSelector((state) => state.status);
 
     // To be added on an Add to Cart button 
-    handleClick=() => {
+    const handleClick=() => {
         dispatch(addItem(currentItem));
     };
 
