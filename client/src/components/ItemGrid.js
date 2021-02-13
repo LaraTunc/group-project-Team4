@@ -4,7 +4,7 @@ import {
     fetchItemsData,
     receiveItemsData,
     receiveItemsDataError
-} from '../../actions';
+} from '../actions';
 import { useSelector } from "react-redux";
 
 const ItemGrid = () => {
