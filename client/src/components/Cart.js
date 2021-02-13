@@ -26,17 +26,17 @@ const Cart = ()=>{
                 </Prices>
                 <Placeholder2/>
             </Total>
+            <Checkout>
+                <CheckoutButton>Proceed to Checkout</CheckoutButton>
+            </Checkout>
         </Wrapper>
     ); 
 };
 
 const Wrapper = styled.div`
-width: 100%; 
 display: flex; 
 flex-direction:column;
-*{
-    border: 1px solid green;
-};
+margin: 0% 5%;
 `;
 
 const Title = styled.div`
@@ -83,6 +83,19 @@ flex:3;
 
 const Placeholder2 = styled.div`
 flex:1;
+`;
+
+const Checkout = styled.div`
+width:100%;
+display:flex;
+justify-content:center;
+`;
+
+const CheckoutButton = styled.button`
+background:black;
+color:white;
+margin-top: 40px;
+padding:15px;
 `;
 
 export default Cart; 
