@@ -23,7 +23,6 @@ const ItemDetails = () => {
         .catch((error) => dispatch(receiveItemDetailsError(error)))
     }, []);
 
-    // To be added on an Add to Cart button 
     const handleClick=() => {
         dispatch(addItem(currentItem));
     };
