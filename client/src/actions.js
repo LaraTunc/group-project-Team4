@@ -27,6 +27,7 @@ export const receiveCompaniesError = (error) => ({
     error,
 })
     
+// ITEM GRID ACTION
 export const fetchItemsData = () => ({
     type: 'FETCH-ITEMS-DATA',
 })

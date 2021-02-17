@@ -3,10 +3,10 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const Companies = () => {
-// const companies = useSelector((state) => state.companies);
-// const currentItems = useSelector((state) => state.currentItems);
-const [companies, setCompanies] = useState();
-const [currentItems, setCurrentItems] = useState();
+const companies = useSelector((state) => state.companiesReducer.companies);
+const currentItems = useSelector((state) => state.itemGridReducer.currentItems);
+// const [companies, setCompanies] = useState();
+// const [currentItems, setCurrentItems] = useState();
 const [products, setProducts] = useState({
     fitbit: null,
     sony: null,
@@ -15,19 +15,7 @@ const [products, setProducts] = useState({
 });
 
 useEffect(() => {
-    fetch('/companies')
-    .then((res) => res.json())
-    .then((response) => setCompanies(response.data));
-}, []);
-
-useEffect(() => {
-    fetch('/products')
-    .then((res) => res.json())
-    .then((response) => setCurrentItems(response.data));
-}, []);
-
-useEffect(() => {
-    if(currentItems) {
+    if(companies && currentItems) {
         let fitbitProducts = currentItems.filter((item) => {
             return item["companyId"] === companies[6]["_id"];
         })
@@ -48,57 +36,73 @@ useEffect(() => {
             garmin: garminProducts,
             })
     }
-}, [currentItems]);
+    console.log(products);
+}, [companies, currentItems]);
 
-console.log(products);
-console.log(products["fitbit"]);
 
 return (
     <>
-        {!companies
+        {!companies && currentItems
         ? <h1>Companies loading...</h1>
         :
-        <>
-            <h1>Shop by Company</h1>
+        <ComponentContainer>
+            <ComponentTitle>Shop by Company</ComponentTitle>
             <CompanyContainer>
                 {!products["fitbit"]
-                ? <h1>Fitbit</h1>
+                ? <CategoryTitle>Fitbit</CategoryTitle>
                 :
                     <div>
                         <Image src={products["fitbit"][0]["imageSrc"]} alt="fitbit product" />
-                        <h1>Fitbit</h1>
+                        <CategoryTitle>Fitbit</CategoryTitle>
                     </div>
                 }
                 {!products["sony"]
-                ? <h1>Sony</h1>
+                ? <CategoryTitle>Sony</CategoryTitle>
                 :
                     <div>
                         <Image src={products["sony"][0]["imageSrc"]} alt="sony product" />
-                        <h1>Sony</h1>
+                        <CategoryTitle>Sony</CategoryTitle>
                     </div>
                 }
                 {!products["polar"]
-                ? <h1>Polar</h1>
+                ? <CategoryTitle>Polar</CategoryTitle>
                 :
                     <div>
                         <Image src={products["polar"][0]["imageSrc"]} alt="polar product" />
-                        <h1>Polar</h1>
+                        <CategoryTitle>Polar</CategoryTitle>
                     </div>
                 }
                 {!products["garmin"]
-                ? <h1>Garmin</h1>
+                ? <CategoryTitle>Garmin</CategoryTitle>
                 :
                     <div>
                         <Image src={products["garmin"][0]["imageSrc"]} alt="garmin product" />
-                        <h1>Garmin</h1>
+                        <CategoryTitle>Garmin</CategoryTitle>
                     </div>
                 }
             </CompanyContainer>
-        </>
+        </ComponentContainer>
         }
     </>
 )
 }
+
+const ComponentContainer = styled.div`
+    position: relative;
+    width: 95%;
+    left: 5px;
+`;
+
+const ComponentTitle = styled.h1`
+    margin-left: 10px;
+    font-size: 24pt;
+    color: #6565EE;
+`;
+
+const CategoryTitle = styled.h1`
+    text-align: center;
+    font-size: 16pt;
+`;
 
 const CompanyContainer = styled.div`
     display: flex;

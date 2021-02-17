@@ -39,51 +39,69 @@ const ProductsByCategory = () => {
             {!currentItems
             ? <h1>Products By Category Loading...</h1>
             :
-            <>
-                <h1>Shop by Category</h1>
+            <ComponentContainer>
+                <ComponentTitle>Shop by Category</ComponentTitle>
                 <CategoryContainer>
                     {!sortedItems["entertainment"]
-                    ? <h1>Entertainment</h1>
+                    ? <CategoryTitle>Entertainment</CategoryTitle>
                     :
                         <div>
                             <img src={sortedItems["entertainment"][0]["imageSrc"]} alt="entertainment product" />
-                            <h1>Entertainment</h1>
+                            <CategoryTitle>Entertainment</CategoryTitle>
                         </div>
                     }
                     {!sortedItems["fitness"]
-                    ? <h1>Fitness</h1>
+                    ? <CategoryTitle>Fitness</CategoryTitle>
                     :
                         <div>
                             <img src={sortedItems["fitness"][0]["imageSrc"]} alt="fitness product" />
-                            <h1>Fitness</h1>
+                            <CategoryTitle>Fitness</CategoryTitle>
                         </div>
                     }
                     {!sortedItems["medical"]
-                    ? <h1>Medical</h1>
+                    ? <CategoryTitle>Medical</CategoryTitle>
                     :
                         <div>
                             <img src={sortedItems["medical"][0]["imageSrc"]} alt="medical product" />
-                            <h1>Medical</h1>
+                            <CategoryTitle>Medical</CategoryTitle>
                         </div>
                     }
                     {!sortedItems["lifestyle"]
-                    ? <h1>Lifestyle</h1>
+                    ? <CategoryTitle>Lifestyle</CategoryTitle>
                     :
                         <div>
                             <img src={sortedItems["lifestyle"][0]["imageSrc"]} alt="lifestyle product" />
-                            <h1>Lifestyle</h1>
+                            <CategoryTitle>Lifestyle</CategoryTitle>
                         </div>
                     }
                 </CategoryContainer>
-            </>
+            </ComponentContainer>
             }
         </>
     )
 }
 
+const ComponentContainer = styled.div`
+    position: relative;
+    width: 95%;
+    left: 5px;
+`;
+
+const ComponentTitle = styled.h1`
+    margin-left: 10px;
+    font-size: 24pt;
+    color: #6565EE;
+`;
+
 const CategoryContainer = styled.div`
     display: flex;
     justify-content: space-evenly;
+    align-items: baseline;
+`;
+
+const CategoryTitle = styled.h1`
+    text-align: center;
+    font-size: 16pt;
 `;
 
 export default ProductsByCategory;
