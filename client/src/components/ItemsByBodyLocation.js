@@ -54,93 +54,99 @@ const ItemsByBodyLocation = () => {
             {!currentItems
             ? <h1>Items by Body Location Loading...</h1>
             :
-            <>
-                <h1>Shop by Body Location</h1>
+            <ComponentContainer>
+                <ComponentTitle>Shop by Body Location</ComponentTitle>
                 <BigContainer>
                     <ContainerOne>
                         {!productByBodyLocation["wrist"]
-                        ? <h1>Wrist Products</h1>
+                        ? <CategoryTitle>Wrist Products</CategoryTitle>
                         :
                             <div>
                                 <img src={productByBodyLocation["wrist"][0]["imageSrc"]} alt="wrist product" />
-                                <h1>Wrist Products</h1>
+                                <CategoryTitle>Wrist Products</CategoryTitle>
                             </div>
                         }
                         {!productByBodyLocation["arm"]
-                        ? <h1>Arm Products</h1>
+                        ? <CategoryTitle>Arm Products</CategoryTitle>
                         :
                             <div>
                                 <img src={productByBodyLocation["arm"][0]["imageSrc"]} alt="arm product" />
-                                <h1>Arm Products</h1>
+                                <CategoryTitle>Arm Products</CategoryTitle>
                             </div>
                         }
                         {!productByBodyLocation["head"]
-                        ? <h1>Head Products</h1>
+                        ? <CategoryTitle>Head Products</CategoryTitle>
                         :
                             <div>
                                 <img src={productByBodyLocation["head"][0]["imageSrc"]} alt="head product" />
-                                <h1>Head Products</h1>
+                                <CategoryTitle>Head Products</CategoryTitle>
                             </div>
                         }
                     </ContainerOne>
                     <ContainerTwo>
                         {!productByBodyLocation["chest"]
-                        ? <h1>Chest Products</h1>
+                        ? <CategoryTitle>Chest Products</CategoryTitle>
                         :
                             <div>
                                 <img src={productByBodyLocation["chest"][0]["imageSrc"]} alt="chest product" />
-                                <h1>Chest Products</h1>
+                                <CategoryTitle>Chest Products</CategoryTitle>
                             </div>
                         }
                         {!productByBodyLocation["waist"]
-                        ? <h1>Waist Products</h1>
+                        ? <CategoryTitle>Waist Products</CategoryTitle>
                         :
                             <div>
                                 <img src={productByBodyLocation["waist"][0]["imageSrc"]} alt="waist product" />
-                                <h1>Waist Products</h1>
+                                <CategoryTitle>Waist Products</CategoryTitle>
                             </div>
                         }
                         {!productByBodyLocation["hands"]
-                        ? <h1>Hands Products</h1>
+                        ? <CategoryTitle>Hands Products</CategoryTitle>
                         :
                             <div>
                                 <img src={productByBodyLocation["hands"][0]["imageSrc"]} alt="hand product" />
-                                <h1>Hand Product</h1>
+                                <CategoryTitle>Hands Products</CategoryTitle>
                             </div>
                         }
                     </ContainerTwo>
                     <ContainerThree>
                     {!productByBodyLocation["neck"]
-                        ? <h1>Neck Products</h1>
+                        ? <CategoryTitle>Neck Products</CategoryTitle>
                         :
                             <div>
                                 <img src={productByBodyLocation["neck"][0]["imageSrc"]} alt="neck product" />
-                                <h1>Neck Products</h1>
+                                <CategoryTitle>Neck Products</CategoryTitle>
                             </div>
                         }
                         {!productByBodyLocation["feet"]
-                        ? <h1>Feet Products</h1>
+                        ? <CategoryTitle>Feet Products</CategoryTitle>
                         :
                             <div>
                                 <img src={productByBodyLocation["feet"][0]["imageSrc"]} alt="feet product" />
-                                <h1>Feet Products</h1>
+                                <CategoryTitle>Feet Products</CategoryTitle>
                             </div>
                         }
                         {!productByBodyLocation["torso"]
-                        ? <h1>Torso Products</h1>
+                        ? <CategoryTitle>Torso Products</CategoryTitle>
                         :
                             <div>
                                 <img src={productByBodyLocation["torso"][0]["imageSrc"]} alt="torso product" />
-                                <h1>Torso Products</h1>
+                                <CategoryTitle>Torso Products</CategoryTitle>
                             </div>
                         }
                     </ContainerThree>
                 </BigContainer>
-            </>
+            </ComponentContainer>
             }
         </>
     )
 }
+
+const ComponentContainer = styled.div`
+    position: relative;
+    width: 95%;
+    left: 5px;
+`;
 
 const BigContainer = styled.div`
     display: flex;
@@ -160,6 +166,17 @@ const ContainerTwo = styled.div`
 const ContainerThree = styled.div`
     display: flex;
     justify-content: space-evenly;
+`;
+
+const ComponentTitle = styled.h1`
+    margin-left: 10px;
+    font-size: 24pt;
+    color: #6565EE;
+`;
+
+const CategoryTitle = styled.h1`
+    text-align: center;
+    font-size: 16pt;
 `;
 
 export default ItemsByBodyLocation;
