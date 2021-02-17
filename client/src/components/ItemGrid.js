@@ -47,14 +47,14 @@ const ItemGrid = () => {
                 { currentItems && (
                 Object.values(currentItems).map((item) => {
                     return (
-                    <ItemWrapper>
+                    <ItemWrapper key={item._id}>
                         <ItemLink href={`/product/${item._id}`} />
                         <Image src={item.imageSrc} />
                         {
                         companies && 
                         companies.map((company) => {
                             if (item.companyId === company._id) {
-                                return <Brand>{company.name}</Brand>
+                                return <Brand key={item.companyId}>{company.name}</Brand>
                             }
                     })
                     }

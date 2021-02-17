@@ -1,24 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useDispatch } from "react-redux";
+import { removeItem } from '../actions';
+import { useHistory } from "react-router-dom";
 
-const CartItem = ()=>{
-    const handleRemove = ()=>{ 
-        console.log("clicked remove button");
-        //dispatch(removeItem(currentItem));
+const CartItem = ({item})=>{
+    const dispatch = useDispatch();
+    let history = useHistory();
+
+    const handleRemove = (item)=>{ 
+        dispatch(removeItem(item));
+        history.push("/cart");
     };
 
     return (
         <Wrapper>
-            <ItemImage><img src="" alt="item"/></ItemImage>
+            <ItemImage><img src={item.imageSrc} alt="item"/></ItemImage>
             <Item>
-                <Brand>Brand</Brand>
-                <p>Brand</p>
-                <p>Description</p>
+                <Brand>{item.name}</Brand>
+                <p><b>Product Information:</b></p>
+                <p><b>Technology type:</b> {item.category}</p>
+                <p><b>Body location:</b> {item.body_location}</p>
             </Item>
-            <Price>$240.00 CAD</Price>
+            <Price>{item.price}</Price>
             <Remove>
                 <button 
-                onClick={handleRemove}
+                onClick={()=>handleRemove(item)}
                 >
                     X
                 </button>
@@ -41,7 +48,6 @@ height:100%;
 display: flex;
 justify-content:center;
 * {
-    border:1px solid grey;
     height:100%; 
 };
 `;

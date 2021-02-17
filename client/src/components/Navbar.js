@@ -1,10 +1,13 @@
 import React from "react";
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 const activeClassName = 'nav-item-active';
 
 const Navbar = () => {
+    const myCart = useSelector((state) => state.myCartReducer);
+
     return (
     <NavArea>
         <Menu>
@@ -12,7 +15,7 @@ const Navbar = () => {
             <StyledLink to="/about">About</StyledLink>
             <Logo src=".././LSM-logo.png"/>
             <StyledLink to="/products">Products</StyledLink>
-            <StyledLink to="/cart">Your Cart</StyledLink>
+            <StyledLink to="/cart">Your Cart ({myCart.length})</StyledLink>
         </Menu>
     </NavArea>
     )
