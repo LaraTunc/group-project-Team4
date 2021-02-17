@@ -52,3 +52,6 @@ export const removeItem = (item) => ({
     item,
 });
 
+export const clearItems = () => ({
+    type: 'CLEAR_ITEMS'
+});

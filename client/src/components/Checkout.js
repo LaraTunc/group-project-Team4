@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from "react-router-dom";
 import { CartSummary, CartButton } from './CartComponents';
+import { useDispatch } from "react-redux";
+import { clearItems } from '../actions';
 
 const Checkout = ()=>{
     const history = useHistory();
@@ -20,6 +22,8 @@ const Checkout = ()=>{
     });
     const [formError, setFormError] = useState('');
 
+    const dispatch = useDispatch();
+
     // Check for empty fields in the entered form data
     // If there are empty fields, push an error 
     const handleClickFunction = (ev)=>{
@@ -32,6 +36,7 @@ const Checkout = ()=>{
             setFormError("Please fill all the fields to proceed.");
         } else {
             setFormError('');
+            dispatch(clearItems());
             history.push("/confirmation");
         };
     };
