@@ -2,11 +2,13 @@ import React from "react";
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+const activeClassName = 'nav-item-active';
+
 const Navbar = () => {
     return (
     <NavArea>
         <Menu>
-            <StyledLink exact activeClassName="active" to="/">Home</StyledLink>
+            <StyledLink exact to="/">Home</StyledLink>
             <StyledLink to="/about">About</StyledLink>
             <Logo src=".././LSM-logo.png"/>
             <StyledLink to="/products">Products</StyledLink>
@@ -39,7 +41,7 @@ display: flex;
 justify-content: center;
 `;
 
-const StyledLink = styled(NavLink)`
+const StyledLink = styled(NavLink).attrs({ activeClassName })`
 color: #000;
 margin-top: 11px;
 padding: 25px 20px 0 20px;
@@ -54,5 +56,10 @@ font-weight: bold;
 &:visited
 {
     text-decoration: none;
+}
+
+&.${activeClassName} 
+{
+    color: #6565EE;
 }
 `;
