@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
-import { addItem } from '../actions';
 import styled from "styled-components";
 
 import { requestItemDetails, receiveItemDetails, receiveItemDetailsError } from '../actions';
@@ -24,10 +23,6 @@ const ItemDetails = () => {
         .then((response) => dispatch(receiveItemDetails(response.data)))
         .catch((error) => dispatch(receiveItemDetailsError(error)))
     }, []);
-
-    const handleClick=() => {
-        dispatch(addItem(currentItem));
-    };
 
 
     // To be added on an Add to Cart button 
