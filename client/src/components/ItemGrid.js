@@ -7,6 +7,7 @@ import {
     receiveItemsDataError
 } from '../actions';
 import { useSelector } from "react-redux";
+import { addItem } from '../actions';
 
 const ItemGrid = () => {
     const dispatch = useDispatch();
@@ -46,22 +47,27 @@ const ItemGrid = () => {
             <Wrapper>
                 { currentItems && (
                 Object.values(currentItems).map((item) => {
+                    if (item.numInStock > 0) {
                     return (
-                    <ItemWrapper key={item._id}>
+                    <ItemWrapper>
                         <ItemLink href={`/product/${item._id}`} />
                         <Image src={item.imageSrc} />
                         {
                         companies && 
                         companies.map((company) => {
                             if (item.companyId === company._id) {
-                                return <Brand key={item.companyId}>{company.name}</Brand>
+                                return <Brand>{company.name}</Brand>
                             }
                     })
                     }
                         <Description>{item.name}</Description>
                         <Price>{item.price}</Price>
+                        <Button onClick={() => {
+                            dispatch(addItem(item))
+                        }}>Add to cart</Button>
                     </ItemWrapper>
                     )
+                }
                 })
                 )
             }
@@ -82,8 +88,23 @@ grid-gap: 24px;
 `;
 
 const ItemWrapper = styled.div`
+display: flex;
+flex-wrap: wrap;
 position: relative;
-padding: 15px;
+padding: 15px 15px 0px 15px;
+`;
+
+const Button = styled.button`
+height: 45px;
+width: 100%;   
+background-color: #6565EE;
+position: relative;
+z-index: 1;
+flex-direction: flex-end;
+bottom: 0;
+margin-bottom: 0;
+color: #fff;
+font-weight: bold;
 `;
 
 const ItemLink = styled.a`
@@ -93,7 +114,6 @@ position: absolute;
 top: 0;
 left: 0;
 text-decoration: none;
-z-index: 10;
 background-color: #FFF;
 opacity: 0; 
 `;
@@ -111,7 +131,9 @@ font-weight: bold;
 `;
 
 const Description = styled.p`
+width: 100%;
 `;
 
 const Price = styled.p`
+width: 100%;
 `;

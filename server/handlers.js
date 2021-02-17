@@ -3,6 +3,15 @@ const companies = require('././data/companies.json');
 
 // get all products
 const getProducts = (req, res) => {
+    
+    // const page = req.query.page;
+    // const limit = req.query.limit;
+    // const startIndex = (page - 1) * limit;
+    // const endIndex = page * limit;
+    // const result = items.slice(startIndex, endIndex);
+    // res.json(result)
+
+    // return res.status(200).json({ status: 200, data: result });
     return res.status(200).json({ status: 200, data: items });
 }
 
