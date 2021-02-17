@@ -41,6 +41,7 @@ export const receiveItemsDataError = (error) => ({
     error,
 })
 
+// CART ACTIONS
 export const addItem = (item) => ({
     type: 'ADD_ITEM',
     item,
@@ -51,7 +52,3 @@ export const removeItem = (item) => ({
     item,
 });
 
-export const updateQuantity = (item) => ({
-    type: 'UPDATE_QUANTITY',
-    item,
-});

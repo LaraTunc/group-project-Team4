@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CartItem = ()=>{
-    const handleRemove = (ev)=>{
-        ev.preventDefault(); 
+    const handleRemove = ()=>{ 
         console.log("clicked remove button");
+        //dispatch(removeItem(currentItem));
     };
 
     return (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { BrowserRouter,
   Switch,
@@ -15,13 +15,6 @@ import Checkout from './Checkout';
 import Confirmation from './Confirmation';
 
 function App() {
-  const [bacon, setBacon] = useState(null);
-
-  useEffect(() => {
-    fetch('/bacon')
-      .then(res => res.json())
-      .then(data => setBacon(data));
-  }, []);
 
   return (
     <BrowserRouter>

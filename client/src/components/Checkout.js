@@ -20,6 +20,8 @@ const Checkout = ()=>{
     });
     const [formError, setFormError] = useState('');
 
+    // Check for empty fields in the entered form data
+    // If there are empty fields, push an error 
     const handleClickFunction = (ev)=>{
         ev.preventDefault();
         const formDataArray = Object.values(formData); 
