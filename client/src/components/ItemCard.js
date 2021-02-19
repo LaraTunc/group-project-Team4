@@ -56,7 +56,7 @@ const Brand = styled.p`
 
 const Button = styled.button`
   position: relative;
-  z-index: 10;
+  z-index: 2;
   bottom: 0;
   background-color: #6565ee;
   color: white;
