@@ -42,11 +42,11 @@ const ItemDetails = () => {
             <ProductInfoContainer>
                 <h3>{currentItem["name"]}</h3>
                 <p>{currentItem["price"]}</p>
-                <div>
-                    <h4>Product Information:</h4>
-                    <p><Span>Body Location: </Span>{currentItem["body_location"]}</p>
-                    <p><Span>Technology Type: </Span> {currentItem["category"]}</p>
-                </div>
+                <h4>Product Information:</h4>
+                <ul>
+                    <ListItem><Span>Body Location: </Span>{currentItem["body_location"]}</ListItem>
+                    <ListItem><Span>Technology Type: </Span> {currentItem["category"]}</ListItem>
+                </ul>
                 <Button onClick={() => handleClick()}>Add to Cart</Button>
             </ProductInfoContainer>
         </ProductContainer>
@@ -70,6 +70,10 @@ const ProductImage = styled.img`
 
 const ProductInfoContainer = styled.div`
     width: 400px;
+`;
+
+const ListItem = styled.li`
+    list-style: none;
 `;
 
 const Span = styled.span`
