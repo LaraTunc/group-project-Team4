@@ -21,7 +21,7 @@ const ItemGrid = () => {
 
   useEffect(() => {
     dispatch(fetchItemsData()); // revise to requestItems
-    fetch(`/products?page=${page}&limit=50`)
+    fetch(`/products/pages?page=${page}&limit=50`)
       .then((res) => res.json())
       .then((products) => {
         console.log(products);

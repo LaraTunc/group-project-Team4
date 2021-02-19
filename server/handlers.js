@@ -3,6 +3,10 @@ const companies = require("././data/companies.json");
 
 // get all products
 const getProducts = (req, res) => {
+  return res.status(200).json({ status: 200, data: items });
+};
+
+const getPaginatedProducts = (req, res) => {
   const { page, limit } = req.query;
   console.log(page, limit);
   const startIndex = (page - 1) * limit;
@@ -50,4 +54,5 @@ module.exports = {
   getCompanies,
   getSingleProduct,
   updateStock,
+  getPaginatedProducts,
 };
