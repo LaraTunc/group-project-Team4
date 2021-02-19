@@ -57,84 +57,78 @@ const ItemsByBodyLocation = () => {
             <ComponentContainer>
                 <ComponentTitle>Shop by Body Location</ComponentTitle>
                 <BigContainer>
-                    <ContainerOne>
-                        {!productByBodyLocation["wrist"]
-                        ? <CategoryTitle>Wrist Products</CategoryTitle>
-                        :
-                            <div>
-                                <img src={productByBodyLocation["wrist"][0]["imageSrc"]} alt="wrist product" />
-                                <CategoryTitle>Wrist Products</CategoryTitle>
-                            </div>
-                        }
-                        {!productByBodyLocation["arm"]
-                        ? <CategoryTitle>Arm Products</CategoryTitle>
-                        :
-                            <div>
-                                <img src={productByBodyLocation["arm"][0]["imageSrc"]} alt="arm product" />
-                                <CategoryTitle>Arm Products</CategoryTitle>
-                            </div>
-                        }
-                        {!productByBodyLocation["head"]
-                        ? <CategoryTitle>Head Products</CategoryTitle>
-                        :
-                            <div>
-                                <img src={productByBodyLocation["head"][0]["imageSrc"]} alt="head product" />
-                                <CategoryTitle>Head Products</CategoryTitle>
-                            </div>
-                        }
-                    </ContainerOne>
-                    <ContainerTwo>
-                        {!productByBodyLocation["chest"]
-                        ? <CategoryTitle>Chest Products</CategoryTitle>
-                        :
-                            <div>
-                                <img src={productByBodyLocation["chest"][0]["imageSrc"]} alt="chest product" />
-                                <CategoryTitle>Chest Products</CategoryTitle>
-                            </div>
-                        }
-                        {!productByBodyLocation["waist"]
-                        ? <CategoryTitle>Waist Products</CategoryTitle>
-                        :
-                            <div>
-                                <img src={productByBodyLocation["waist"][0]["imageSrc"]} alt="waist product" />
-                                <CategoryTitle>Waist Products</CategoryTitle>
-                            </div>
-                        }
-                        {!productByBodyLocation["hands"]
-                        ? <CategoryTitle>Hands Products</CategoryTitle>
-                        :
-                            <div>
-                                <img src={productByBodyLocation["hands"][0]["imageSrc"]} alt="hand product" />
-                                <CategoryTitle>Hands Products</CategoryTitle>
-                            </div>
-                        }
-                    </ContainerTwo>
-                    <ContainerThree>
+                    {!productByBodyLocation["wrist"]
+                    ? <CategoryTitle>Wrist</CategoryTitle>
+                    :
+                        <ItemContainer>
+                            <Image src={productByBodyLocation["wrist"][0]["imageSrc"]} alt="wrist product" />
+                            <CategoryTitle>Wrist</CategoryTitle>
+                        </ItemContainer>
+                    }
+                    {!productByBodyLocation["arm"]
+                    ? <CategoryTitle>Arm</CategoryTitle>
+                    :
+                        <ItemContainer>
+                            <Image src={productByBodyLocation["arm"][0]["imageSrc"]} alt="arm product" />
+                            <CategoryTitle>Arm</CategoryTitle>
+                        </ItemContainer>
+                    }
+                    {!productByBodyLocation["head"]
+                    ? <CategoryTitle>Head</CategoryTitle>
+                    :
+                        <ItemContainer>
+                            <Image src={productByBodyLocation["head"][0]["imageSrc"]} alt="head product" />
+                            <CategoryTitle>Head</CategoryTitle>
+                        </ItemContainer>
+                    }
+                    {!productByBodyLocation["chest"]
+                    ? <CategoryTitle>Chest</CategoryTitle>
+                    :
+                        <ItemContainer>
+                            <Image src={productByBodyLocation["chest"][0]["imageSrc"]} alt="chest product" />
+                            <CategoryTitle>Chest</CategoryTitle>
+                        </ItemContainer>
+                    }
+                    {!productByBodyLocation["waist"]
+                    ? <CategoryTitle>Waist</CategoryTitle>
+                    :
+                        <ItemContainer>
+                            <Image src={productByBodyLocation["waist"][0]["imageSrc"]} alt="waist product" />
+                            <CategoryTitle>Waist</CategoryTitle>
+                        </ItemContainer>
+                    }
+                    {!productByBodyLocation["hands"]
+                    ? <CategoryTitle>Hand</CategoryTitle>
+                    :
+                        <ItemContainer>
+                            <Image src={productByBodyLocation["hands"][0]["imageSrc"]} alt="hand product" />
+                            <CategoryTitle>Hand</CategoryTitle>
+                        </ItemContainer>
+                    }
                     {!productByBodyLocation["neck"]
-                        ? <CategoryTitle>Neck Products</CategoryTitle>
-                        :
-                            <div>
-                                <img src={productByBodyLocation["neck"][0]["imageSrc"]} alt="neck product" />
-                                <CategoryTitle>Neck Products</CategoryTitle>
-                            </div>
-                        }
-                        {!productByBodyLocation["feet"]
-                        ? <CategoryTitle>Feet Products</CategoryTitle>
-                        :
-                            <div>
-                                <img src={productByBodyLocation["feet"][0]["imageSrc"]} alt="feet product" />
-                                <CategoryTitle>Feet Products</CategoryTitle>
-                            </div>
-                        }
-                        {!productByBodyLocation["torso"]
-                        ? <CategoryTitle>Torso Products</CategoryTitle>
-                        :
-                            <div>
-                                <img src={productByBodyLocation["torso"][0]["imageSrc"]} alt="torso product" />
-                                <CategoryTitle>Torso Products</CategoryTitle>
-                            </div>
-                        }
-                    </ContainerThree>
+                    ? <CategoryTitle>Neck</CategoryTitle>
+                    :
+                        <ItemContainer>
+                            <Image src={productByBodyLocation["neck"][0]["imageSrc"]} alt="neck product" />
+                            <CategoryTitle>Neck</CategoryTitle>
+                        </ItemContainer>
+                    }
+                    {!productByBodyLocation["feet"]
+                    ? <CategoryTitle>Foot</CategoryTitle>
+                    :
+                        <ItemContainer>
+                            <Image src={productByBodyLocation["feet"][0]["imageSrc"]} alt="feet product" />
+                            <CategoryTitle>Foot</CategoryTitle>
+                        </ItemContainer>
+                    }
+                    {!productByBodyLocation["torso"]
+                    ? <CategoryTitle>Torso</CategoryTitle>
+                    :
+                        <ItemContainer>
+                            <Image src={productByBodyLocation["torso"][0]["imageSrc"]} alt="torso product" />
+                            <CategoryTitle>Torso</CategoryTitle>
+                        </ItemContainer>
+                    }
                 </BigContainer>
             </ComponentContainer>
             }
@@ -150,22 +144,20 @@ const ComponentContainer = styled.div`
 
 const BigContainer = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-left: 40px;
+    margin-right: 10px;
+    padding: 15px;
 `;
 
-const ContainerOne = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-`;
+const ItemContainer = styled.div`
+    flex: 0 0 auto;
+    margin: 0 45px;
 
-const ContainerTwo = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-`;
-
-const ContainerThree = styled.div`
-    display: flex;
-    justify-content: space-evenly;
+    &:hover {
+        transform: scale(1.1);
+    }
 `;
 
 const ComponentTitle = styled.h1`
@@ -177,6 +169,11 @@ const ComponentTitle = styled.h1`
 const CategoryTitle = styled.h1`
     text-align: center;
     font-size: 16pt;
+`;
+
+const Image = styled.img`
+    width: 150px;
+    height: 125px;
 `;
 
 export default ItemsByBodyLocation;

@@ -5,8 +5,6 @@ import styled from "styled-components";
 const Companies = () => {
 const companies = useSelector((state) => state.companiesReducer.companies);
 const currentItems = useSelector((state) => state.itemGridReducer.currentItems);
-// const [companies, setCompanies] = useState();
-// const [currentItems, setCurrentItems] = useState();
 const [products, setProducts] = useState({
     fitbit: null,
     sony: null,
@@ -110,8 +108,8 @@ const CompanyContainer = styled.div`
 `;
 
 const Image = styled.img`
-    width: 250px;
-    height: 200px;
+    width: 150px;
+    height: 125px;
 `;
 
 export default Companies;
