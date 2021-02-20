@@ -13,6 +13,7 @@ import Navbar from './Navbar';
 import About from './About';
 import Checkout from './Checkout';
 import Confirmation from './Confirmation';
+import BodyLocationResults from './BodyLocationResults';
 
 function App() {
 
@@ -32,6 +33,9 @@ function App() {
         </Route>
         <Route path="/product/:productId">
           <ItemDetails />
+        </Route>
+        <Route path="/products/:category">
+          <BodyLocationResults />
         </Route>
         <Route path="/cart">
           <Cart />

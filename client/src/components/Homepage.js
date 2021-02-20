@@ -42,18 +42,23 @@ const Homepage = () => {
             <ProductsByCategory />
         </Container>
     )
-
 }
 
 const Container = styled.div`
     margin: 10px 0;
+    position: relative;
 `;
 
 const ImageContainer = styled.div`
-    position: relative;
-    left: 15%;
+    position: absolute;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 1200px;
     height: 650px;
+    left: 30vh;
+    top: 50%;
+    transform: translate(0, -25%);
 `;
 
 const Heading = styled.h2`
@@ -81,13 +86,10 @@ const HeadingContainer = styled.div`
 
 const Image = styled.img`
     position: absolute;
+    display: block;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
-
-    /* &:hover {
-        border: 5px solid black;
-    } */
 `;
 
 
