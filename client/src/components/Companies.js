@@ -58,7 +58,7 @@ return (
                 ? <CategoryTitle>Sony</CategoryTitle>
                 :
                     <div>
-                        <Image src={products["sony"][0]["imageSrc"]} alt="sony product" />
+                        {products["sony"][0] && <Image src={products["sony"][0]["imageSrc"]} alt="sony product" />}
                         <CategoryTitle>Sony</CategoryTitle>
                     </div>
                 }

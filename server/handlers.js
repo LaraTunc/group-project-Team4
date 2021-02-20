@@ -36,16 +36,27 @@ const getSingleProduct = (req, res) => {
 // update stock
 const updateStock = (req, res) => {
   const incomingOrder = req.body;
-  // req.body = {"id": 1234, "quantity": Y}
-  items.forEach((element) => {
-    if (element._id === incomingOrder.id) {
-      element.numInStock = element.numInStock - incomingOrder.quantity;
-    }
+  // req.body = [{"id": 1234,name:"etc",...},{"id": 1234,name:"etc",...},...]
+  const returnArr=[];
+
+  items.forEach((item) => {
+    incomingOrder.forEach((order)=>{
+      if(item._id === order._id) {
+        item.numInStock --;
+        if(item.numInStock===0) {
+          res.status(400).json({
+            status:"error",
+            error:`${item.name} does not have enough stock. Only ${item.numInStock} is available.`
+          });
+        };
+        returnArr.push(item);
+      };
+    });
   });
-  const item = items.find((element) => element._id === incomingOrder.id);
+
   res.status(200).json({
     status: "success",
-    item,
+    returnArr,
   });
 };
 

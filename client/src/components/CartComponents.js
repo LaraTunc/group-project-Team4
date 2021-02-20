@@ -13,6 +13,8 @@ export const CartSummary = ()=> {
         let convertToNumber = parseFloat(itemPrice.slice(1));
         cartTotal += convertToNumber;
     });
+    // make sure it's no more than 2 decimals 
+    cartTotal = cartTotal.toFixed(2);
     
     return (
         <Wrapper> 

@@ -56,13 +56,13 @@ const ItemGrid = () => {
             const company = companies.find(
               (company) => item.companyId === company._id
             );
-            return <ItemCard item={item} company={company} />;
+            return <ItemCard item={item} key={item._id} company={company} />;
           })}
       </GridWrapper>
       <ButtonWrapper>
         {page > 1 && <Button onClick={prevPage}>previous</Button>}
         {pageNums.map((pageNum) => (
-          <Button onClick={() => setPage(pageNum)}>{pageNum}</Button>
+          <Button key={pageNum} onClick={() => setPage(pageNum)}>{pageNum}</Button>
         ))}
         {page < 6 && <Button onClick={nextPage}>next</Button>}
       </ButtonWrapper>

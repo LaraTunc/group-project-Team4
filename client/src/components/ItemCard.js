@@ -2,13 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { addItem } from "../actions";
+import { Link } from "react-router-dom";
 
 const ItemCard = ({ item, company }) => {
   const dispatch = useDispatch();
 
   return (
     <ItemWrapper key={item._id}>
-      <ItemLink href={`/product/${item._id}`} />
+      <ItemLink to={`/product/${item._id}`} />
       <Image src={item.imageSrc} />
       <Brand key={item.companyId}>{company?.name}</Brand>
       <Description>{item.name}</Description>
@@ -29,7 +30,7 @@ const ItemWrapper = styled.div`
   padding: 15px;
 `;
 
-const ItemLink = styled.a`
+const ItemLink = styled(Link)`
   height: 100%;
   width: 100%;
   position: absolute;
