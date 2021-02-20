@@ -10,7 +10,6 @@ const Cart = ()=>{
 
     return (
         <Wrapper>
-            <Title><h3>My Cart</h3></Title>
             <CartSummary/>
             {cart.length===0 
             ? 
@@ -34,11 +33,6 @@ const Wrapper = styled.div`
 display: flex; 
 flex-direction:column;
 margin: 0% 5%;
-`;
-
-const Title = styled.div`
-display:flex;
-justify-content:center;
 `;
 
 

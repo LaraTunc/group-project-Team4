@@ -26,6 +26,7 @@ const CartItem = ({item})=>{
             <Remove>
                 <button 
                 onClick={()=>handleRemove(item)}
+                style={{cursor: 'pointer'}}
                 >
                     X
                 </button>

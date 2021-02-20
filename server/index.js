@@ -33,7 +33,6 @@ express()
   .use("/", express.static(__dirname + "/"))
 
   // REST endpoints?
-  .get("/bacon", (req, res) => res.status(200).json("🥓"))
 
   // get all products
   .get("/products", getProducts)
@@ -48,5 +47,12 @@ express()
 
   // update stock of products
   .put("/order", updateStock)
+
+  .get("*", (req, res) => {
+    res.status(404).json({
+      status: 404,
+      message: "This is obviously not what you are looking for.",
+    });
+  })
 
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));

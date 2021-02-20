@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from "react-router-dom";
 import { CartSummary, CartButton } from './CartComponents';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearItems } from '../actions';
 
 const Checkout = ()=>{
@@ -22,6 +22,8 @@ const Checkout = ()=>{
     });
     const [formError, setFormError] = useState('');
 
+    const cart = useSelector((state) => state.myCartReducer);
+
     const dispatch = useDispatch();
 
     // Check for empty fields in the entered form data
@@ -35,15 +37,33 @@ const Checkout = ()=>{
         if(emptyField.length>0) {
             setFormError("Please fill all the fields to proceed.");
         } else {
-            setFormError('');
-            dispatch(clearItems());
-            history.push("/confirmation");
+            
+            fetch("/order", {
+                method: "PUT",
+                body: JSON.stringify(cart),
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+            })
+            .then((res) => res.json())
+            .then((json) => {
+                const { status } = json;
+                console.log(json);
+                if (status === "success") {
+                    setFormError('');
+                    dispatch(clearItems());
+                    history.push("/confirmation");
+                } else if (status === "error") {
+                    setFormError(json.error);
+                };
+            })
         };
+
     };
 
     return(
         <Wrapper>
-            <Title><h3>Checkout</h3></Title>
             <Form>
                 <Row>
                     <Column>
@@ -146,11 +166,6 @@ const Wrapper = styled.div`
 display: flex; 
 flex-direction:column;
 margin: 0% 5%;
-`;
-
-const Title = styled.div`
-display:flex;
-justify-content:center;
 `;
 
 const Form = styled.form`
