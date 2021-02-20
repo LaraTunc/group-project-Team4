@@ -11,10 +11,12 @@ const getPaginatedProducts = (req, res) => {
   console.log(page, limit);
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
-  const availableItems = items.filter((item) => item.numInStock > 0);
-  const itemsToSend = availableItems.slice(startIndex, endIndex);
+  const itemsToSend = items.slice(startIndex, endIndex);
+  const numPages = Math.ceil(items.length / limit + 1);
+  const pagesArray = Array.from(Array(numPages).keys());
+  const pages = pagesArray.slice(1, pagesArray.length);
 
-  return res.status(200).json({ status: 200, data: itemsToSend });
+  return res.status(200).json({ status: 200, data: itemsToSend, pages });
 };
 
 // get all companies
@@ -37,20 +39,20 @@ const getSingleProduct = (req, res) => {
 const updateStock = (req, res) => {
   const incomingOrder = req.body;
   // req.body = [{"id": 1234,name:"etc",...},{"id": 1234,name:"etc",...},...]
-  const returnArr=[];
+  const returnArr = [];
 
   items.forEach((item) => {
-    incomingOrder.forEach((order)=>{
-      if(item._id === order._id) {
-        item.numInStock --;
-        if(item.numInStock===0) {
+    incomingOrder.forEach((order) => {
+      if (item._id === order._id) {
+        item.numInStock--;
+        if (item.numInStock === 0) {
           res.status(400).json({
-            status:"error",
-            error:`${item.name} does not have enough stock. Only ${item.numInStock} is available.`
+            status: "error",
+            error: `${item.name} does not have enough stock. Only ${item.numInStock} is available.`,
           });
-        };
+        }
         returnArr.push(item);
-      };
+      }
     });
   });
 

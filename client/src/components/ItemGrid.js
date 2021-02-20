@@ -1,34 +1,31 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import {
-  fetchItemsData,
-  receiveItemsData,
-  receiveItemsDataError,
-} from "../actions";
+import { requestItems, receiveItems, receiveItemsError } from "../actions";
 import { useSelector } from "react-redux";
 import ItemCard from "./ItemCard";
+import Pages from "./Pages";
 
 const ItemGrid = () => {
   const dispatch = useDispatch();
   const [companies, setCompanies] = useState();
   const [page, setPage] = useState(1);
-  const pageNums = [1, 2, 3, 4, 5, 6];
+  const [pageNums, setPageNums] = useState([]);
   const status = useSelector((state) => state.itemGridReducer.status);
   const currentItems = useSelector((state) => ({
     ...state.itemGridReducer.currentItems,
   }));
 
   useEffect(() => {
-    dispatch(fetchItemsData()); // revise to requestItems
+    dispatch(requestItems());
     fetch(`/products/pages?page=${page}&limit=50`)
       .then((res) => res.json())
       .then((products) => {
-        console.log(products);
-        dispatch(receiveItemsData(products.data));
+        dispatch(receiveItems(products.data));
+        setPageNums(products.pages);
       })
       .catch((error) => {
-        dispatch(receiveItemsDataError(error));
+        dispatch(receiveItemsError(error));
       });
   }, [page]);
 
@@ -39,9 +36,6 @@ const ItemGrid = () => {
         setCompanies(json.data);
       });
   }, []);
-
-  const nextPage = () => setPage(page + 1);
-  const prevPage = () => setPage(page - 1);
 
   if (!status) {
     return <div>LOADING...</div>;
@@ -59,13 +53,7 @@ const ItemGrid = () => {
             return <ItemCard item={item} key={item._id} company={company} />;
           })}
       </GridWrapper>
-      <ButtonWrapper>
-        {page > 1 && <Button onClick={prevPage}>previous</Button>}
-        {pageNums.map((pageNum) => (
-          <Button key={pageNum} onClick={() => setPage(pageNum)}>{pageNum}</Button>
-        ))}
-        {page < 6 && <Button onClick={nextPage}>next</Button>}
-      </ButtonWrapper>
+      <Pages pageNums={pageNums} page={page} setPage={setPage} />
     </Wrapper>
   );
 };
@@ -81,13 +69,4 @@ const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   grid-gap: 24px;
-`;
-
-const ButtonWrapper = styled.div`
-  margin-top: 10px;
-  bottom: 0;
-`;
-
-const Button = styled.button`
-  padding: 10px;
 `;
