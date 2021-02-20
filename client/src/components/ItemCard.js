@@ -17,9 +17,7 @@ const ItemCard = ({ item, company }) => {
       <Description>{item.name}</Description>
       <Price>{item.price}</Price>
       {item.numInStock === 0 ? (
-        <Button style={{ backgroundColor: "grey" }} disabled>
-          Out of stock
-        </Button>
+        <DisabledButton disabled>Out of stock</DisabledButton>
       ) : (
         <Button onClick={handleClick}>Add to cart</Button>
       )}
@@ -67,3 +65,15 @@ const Brand = styled.p`
 const Description = styled.p``;
 
 const Price = styled.p``;
+
+const DisabledButton = styled.button`
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  bottom: 0;
+  background-color: grey;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+`;

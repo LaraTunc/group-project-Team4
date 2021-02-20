@@ -29,16 +29,16 @@ export const receiveCompaniesError = (error) => ({
 
 // ITEM GRID ACTION
 export const requestItems = () => ({
-  type: "FETCH-ITEMS-DATA",
+  type: "REQUEST_ITEMS",
 });
 
 export const receiveItems = (currentItems) => ({
-  type: "RECEIVE-ITEMS-DATA",
+  type: "RECEIVE_ITEMS",
   currentItems,
 });
 
 export const receiveItemsError = (error) => ({
-  type: "ERROR-ITEMS-DATA",
+  type: "RECEIVE_ERROR_ITEMS",
   error,
 });
 
