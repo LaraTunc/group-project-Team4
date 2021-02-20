@@ -41,6 +41,7 @@ border-top: 1px solid grey;
 border-bottom: 1px solid grey;
 display:flex;
 height: 200px;
+padding:5px;
 `; 
 
 const ItemImage = styled.div`

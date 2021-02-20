@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import Button from "../components/Button";
 
 import styled from "styled-components";
 
@@ -78,15 +79,6 @@ const ListItem = styled.li`
 
 const Span = styled.span`
     font-weight: bold;
-`;
-
-const Button = styled.button`
-    margin-top: 15px;
-    color: #6565EE;
-
-    &:hover {
-        cursor: pointer;
-    }
 `;
 
 export default ItemDetails;

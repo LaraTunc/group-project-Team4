@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useHistory } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { CartSummary, CartButton } from './CartComponents';
+import Button from "../components/Button";
 
 const Cart = ()=>{
     let history = useHistory();
@@ -19,9 +20,7 @@ const Cart = ()=>{
                     Search products
                 </CartButton>
             : 
-                <CartButton
-                    handleClick={()=> history.push("/checkout")}
-                >
+                <CartButton handleClick={()=> history.push("/checkout")}>
                     Proceed to Checkout
                 </CartButton>
             }

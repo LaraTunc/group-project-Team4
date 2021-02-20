@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { addItem } from "../actions";
 import { Link } from "react-router-dom";
+import Button from "../components/Button";
 
 const ItemCard = ({ item, company }) => {
   const dispatch = useDispatch();
@@ -61,16 +62,6 @@ const Brand = styled.p`
   color: #000;
   font-weight: bold;
   padding: 5px;
-`;
-
-const Button = styled.button`
-  position: relative;
-  z-index: 2;
-  bottom: 0;
-  background-color: #6565ee;
-  color: white;
-  padding: 10px;
-  font-weight: bold;
 `;
 
 const Description = styled.p``;
