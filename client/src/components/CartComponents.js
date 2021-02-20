@@ -123,7 +123,10 @@ margin-bottom: 40px;
 `;
 
 const Button = styled.button`
-background:black;
+background-color: #6565ee;
+padding: 10px;
+font-weight: bold;
+border-radius:5px;
 color:white;
 margin-top: 40px;
 padding:15px;
