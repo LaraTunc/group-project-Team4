@@ -20,7 +20,7 @@ export default function itemGridReducer(state = initialState, action) {
             }
         }
         case 'ERROR-ITEMS-DATA': {
-            return{
+            return {
                 ...state,
                 status: 'error',
             }
