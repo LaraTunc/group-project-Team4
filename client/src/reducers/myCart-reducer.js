@@ -10,11 +10,14 @@ export default function myCartReducer(state = initialState, action) {
         }
         case "REMOVE_ITEM": {
             const index = state.indexOf(action.item);
-            const array = state;
+            const array = [...state];
             if (index > -1) {
                 array.splice(index, 1);
             };
             return array;
+        }
+        case "CLEAR_ITEMS": {
+            return [];
         }
         default: {
             return state;
