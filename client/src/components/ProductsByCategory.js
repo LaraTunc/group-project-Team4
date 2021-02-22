@@ -3,20 +3,13 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const ProductsByCategory = () => {
-    // const currentItems = useSelector((state) => state.currentItems);
-    const [currentItems, setCurrentItems] = useState();
+    const currentItems = useSelector(state => state.itemGridReducer.currentItems);
     const [sortedItems, setSortedItems] = useState({
         entertainment: null,
         fitness: null,
         medical: null,
         lifestyle: null,
     })
-
-    useEffect(() => {
-        fetch('/products')
-        .then((res) => res.json())
-        .then((response) => setCurrentItems(response.data));
-    }, []);
 
     useEffect(() => {
         if(currentItems) {
@@ -85,6 +78,7 @@ const ComponentContainer = styled.div`
     position: relative;
     width: 95%;
     left: 5px;
+    top: 1200px;
     bottom: 10px;
 `;
 
@@ -102,19 +96,18 @@ const CategoriesContainer = styled.div`
 
 const IndivCategoryContainer = styled.div`
     position: relative;
+    flex: 0 0 auto;
+    padding: 4px;
+    border: 2px solid #dcdcdc;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 `;
 
 const CategoryTitle = styled.h1`
-    /* position: absolute;
-    top: 40%;
-    left: 20%; */
     text-align: center;
     font-size: 16pt;
-    /* color: white;
-    background-color: gray;
-    padding: 5px;
-    border-radius: 12pt;
-    opacity: 0.90; */
 `;
 
 const Image = styled.img`

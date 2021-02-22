@@ -55,13 +55,19 @@ const Homepage = () => {
 
 const Container = styled.div`
   margin: 10px 0;
+  position: relative;
 `;
 
 const ImageContainer = styled.div`
-  position: relative;
-  left: 15%;
+  position: absolute;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 1200px;
   height: 650px;
+  left: 30vh;
+  top: 50%;
+  transform: translate(0, -25%);
 `;
 
 const Heading = styled.h2`
@@ -88,6 +94,7 @@ const HeadingContainer = styled.div`
 `;
 
 const Image = styled.img`
+<<<<<<< HEAD
   position: absolute;
   margin-left: auto;
   margin-right: auto;
@@ -96,6 +103,13 @@ const Image = styled.img`
   /* &:hover {
         border: 5px solid black;
     } */
+=======
+    position: absolute;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+>>>>>>> 3721d90759d401a96e72e222791aad5a8c2dbbc3
 `;
 
 export default Homepage;
