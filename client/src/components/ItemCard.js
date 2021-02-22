@@ -7,15 +7,20 @@ import Button from "../components/Button";
 
 const ItemCard = ({ item, company }) => {
   const dispatch = useDispatch();
+  const handleClick = () => dispatch(addItem(item));
 
   return (
     <ItemWrapper key={item._id}>
-      <ItemLink to={`/product/${item._id}`} />
+      <ItemLink stock={item.numInStock} to={`/product/${item._id}`} />
       <Image src={item.imageSrc} />
       <Brand key={item.companyId}>{company?.name}</Brand>
       <Description>{item.name}</Description>
       <Price>{item.price}</Price>
-      <Button onClick={() => dispatch(addItem(item))}>Add to cart</Button>
+      {item.numInStock === 0 ? (
+        <DisabledButton disabled>Out of stock</DisabledButton>
+      ) : (
+        <Button onClick={handleClick}>Add to cart</Button>
+      )}
     </ItemWrapper>
   );
 };
@@ -40,7 +45,8 @@ const ItemLink = styled(Link)`
   text-decoration: none;
   z-index: 1;
   background-color: #fff;
-  opacity: 0;
+  opacity: ${(props) => (props.stock === 0 ? 0.3 : 0)};
+  pointer-events: ${(props) => (props.stock === 0 ? "none" : "auto")};
 `;
 
 const Image = styled.img`
@@ -59,3 +65,15 @@ const Brand = styled.p`
 const Description = styled.p``;
 
 const Price = styled.p``;
+
+const DisabledButton = styled.button`
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  bottom: 0;
+  background-color: grey;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+`;
