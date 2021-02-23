@@ -9,16 +9,16 @@ import {
   requestCompanies,
   receiveCompanies,
   receiveCompaniesError,
-} from "../actions.js";
-import { requestItems, receiveItems, receiveItemsError } from "../actions";
+} from "../actions";
+import { 
+  fetchItemsData,
+  receiveItemsData,
+  receiveItemsDataError,
+} from "../actions";
 
 const Homepage = () => {
-<<<<<<< HEAD
     const dispatch = useDispatch();
     const currentItems = useSelector((state) => state.itemGridReducer.currentItems);
-=======
-  const dispatch = useDispatch();
->>>>>>> 7d99f6f84fcc7439105bfb4dac701cd1638dd81d
 
   useEffect(() => {
     dispatch(requestCompanies());
@@ -29,22 +29,24 @@ const Homepage = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(requestItems());
+    dispatch(fetchItemsData());
     fetch("/products")
       .then((res) => res.json())
       .then((products) => {
-        dispatch(receiveItems(products.data));
+        dispatch(receiveItemsData(products.data));
       })
       .catch((error) => {
-        dispatch(receiveItemsError(error));
+        dispatch(receiveItemsDataError(error));
       });
   }, []);
 
-<<<<<<< HEAD
     return (
         <Container>
             <ImageContainer>
-                <Image src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.michaelsolomon.com%2Fwp-content%2Fuploads%2F2018%2F04%2Fwearable-technology.jpg&f=1&nofb=1" alt="running with tech" />
+                <Image
+                  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.michaelsolomon.com%2Fwp-content%2Fuploads%2F2018%2F04%2Fwearable-technology.jpg&f=1&nofb=1"
+                  alt="running with tech" 
+                />
                 <HeadingContainer><Heading>Wearable Technology</Heading></HeadingContainer>
             </ImageContainer>
             {currentItems && (
@@ -58,25 +60,6 @@ const Homepage = () => {
         </Container>
     )
 }
-=======
-  return (
-    <Container>
-      <ImageContainer>
-        <Image
-          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.michaelsolomon.com%2Fwp-content%2Fuploads%2F2018%2F04%2Fwearable-technology.jpg&f=1&nofb=1"
-          alt="running with tech"
-        />
-        <HeadingContainer>
-          <Heading>Wearable Technology</Heading>
-        </HeadingContainer>
-      </ImageContainer>
-      <ItemsByBodyLocation />
-      <Companies />
-      <ProductsByCategory />
-    </Container>
-  );
-};
->>>>>>> 7d99f6f84fcc7439105bfb4dac701cd1638dd81d
 
 const Container = styled.div`
   margin: 10px 0;
@@ -119,22 +102,11 @@ const HeadingContainer = styled.div`
 `;
 
 const Image = styled.img`
-<<<<<<< HEAD
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-
-  /* &:hover {
-        border: 5px solid black;
-    } */
-=======
     position: absolute;
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
->>>>>>> 3721d90759d401a96e72e222791aad5a8c2dbbc3
 `;
 
 export default Homepage;
