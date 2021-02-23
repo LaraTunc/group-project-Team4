@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 import ItemsByBodyLocation from "./ItemsByBodyLocation";
@@ -10,6 +10,7 @@ import { fetchItemsData, receiveItemsData, receiveItemsDataError } from '../acti
 
 const Homepage = () => {
     const dispatch = useDispatch();
+    const currentItems = useSelector((state) => state.itemGridReducer.currentItems);
 
     useEffect(() => {
         dispatch(requestCompanies());
@@ -37,9 +38,14 @@ const Homepage = () => {
                 <Image src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.michaelsolomon.com%2Fwp-content%2Fuploads%2F2018%2F04%2Fwearable-technology.jpg&f=1&nofb=1" alt="running with tech" />
                 <HeadingContainer><Heading>Wearable Technology</Heading></HeadingContainer>
             </ImageContainer>
-            <ItemsByBodyLocation />
-            <Companies />
-            <ProductsByCategory />
+            {currentItems && (
+                <>
+                    <ItemsByBodyLocation />
+                    <Companies />
+                    <ProductsByCategory />
+                </>
+            )
+            }
         </Container>
     )
 }
