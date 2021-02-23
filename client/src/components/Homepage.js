@@ -11,9 +11,9 @@ import {
   receiveCompaniesError,
 } from "../actions";
 import { 
-  fetchItemsData,
-  receiveItemsData,
-  receiveItemsDataError,
+  requestItems,
+  receiveItems,
+  receiveItemsError
 } from "../actions";
 
 const Homepage = () => {
@@ -29,14 +29,14 @@ const Homepage = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(fetchItemsData());
+    dispatch(requestItems());
     fetch("/products")
       .then((res) => res.json())
       .then((products) => {
-        dispatch(receiveItemsData(products.data));
+        dispatch(receiveItems(products.data));
       })
       .catch((error) => {
-        dispatch(receiveItemsDataError(error));
+        dispatch(receiveItemsError(error));
       });
   }, []);
 
