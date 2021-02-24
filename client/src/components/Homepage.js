@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 import ItemsByBodyLocation from "./ItemsByBodyLocation";
@@ -9,11 +9,16 @@ import {
   requestCompanies,
   receiveCompanies,
   receiveCompaniesError,
-} from "../actions.js";
-import { requestItems, receiveItems, receiveItemsError } from "../actions";
+} from "../actions";
+import { 
+  requestItems,
+  receiveItems,
+  receiveItemsError
+} from "../actions";
 
 const Homepage = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const currentItems = useSelector((state) => state.itemGridReducer.currentItems);
 
   useEffect(() => {
     dispatch(requestCompanies());
@@ -35,23 +40,26 @@ const Homepage = () => {
       });
   }, []);
 
-  return (
-    <Container>
-      <ImageContainer>
-        <Image
-          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.michaelsolomon.com%2Fwp-content%2Fuploads%2F2018%2F04%2Fwearable-technology.jpg&f=1&nofb=1"
-          alt="running with tech"
-        />
-        <HeadingContainer>
-          <Heading>Wearable Technology</Heading>
-        </HeadingContainer>
-      </ImageContainer>
-      <ItemsByBodyLocation />
-      <Companies />
-      <ProductsByCategory />
-    </Container>
-  );
-};
+    return (
+        <Container>
+            <ImageContainer>
+                <Image
+                  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.michaelsolomon.com%2Fwp-content%2Fuploads%2F2018%2F04%2Fwearable-technology.jpg&f=1&nofb=1"
+                  alt="running with tech" 
+                />
+                <HeadingContainer><Heading>Wearable Technology</Heading></HeadingContainer>
+            </ImageContainer>
+            {currentItems && (
+                <>
+                    <ItemsByBodyLocation />
+                    <Companies />
+                    <ProductsByCategory />
+                </>
+            )
+            }
+        </Container>
+    )
+}
 
 const Container = styled.div`
   margin: 10px 0;
@@ -94,22 +102,11 @@ const HeadingContainer = styled.div`
 `;
 
 const Image = styled.img`
-<<<<<<< HEAD
   position: absolute;
+  display: block;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
-
-  /* &:hover {
-        border: 5px solid black;
-    } */
-=======
-    position: absolute;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
->>>>>>> 3721d90759d401a96e72e222791aad5a8c2dbbc3
 `;
 
 export default Homepage;
